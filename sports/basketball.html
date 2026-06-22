@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>농구 · 체육 교과서</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body style="--accent:var(--c-gugi)">
+
+<div class="topbar">
+  <a class="home" href="../index.html">📖 목차</a>
+  <span class="title">🏀 농구</span>
+  <span class="counter"></span>
+</div>
+<div class="progress"></div>
+
+<div class="deck">
+
+  <!-- 1. 표지 -->
+  <section class="slide cover active">
+    <img class="cover-bg" src="../assets/img/basketball.png" alt="농구 코트">
+    <div class="cover-shade"></div>
+    <div class="kicker">영역형 경쟁 · 구기 종목</div>
+    <div class="emoji">🏀</div>
+    <h1>농구</h1>
+    <p class="lead">5명이 한 팀이 되어 상대 바스켓에 공을 넣어 더 많은 점수를 얻는 경기. 빠른 공수 전환과 팀워크, 정확한 슛이 승부를 가릅니다.</p>
+  </section>
+
+  <!-- 2. 소개 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">종목 소개</span>
+      <h2>농구란?</h2>
+      <p class="desc">손으로 공을 다루는 대표적인 영역형 경쟁 스포츠</p>
+      <ul>
+        <li><span class="n">1</span><div><b>목표</b> — 제한 시간 안에 상대 바스켓(높이 3.05m)에 공을 더 많이 넣기</div></li>
+        <li><span class="n">2</span><div><b>인원</b> — 코트 위 각 팀 5명 + 교체 선수</div></li>
+        <li><span class="n">3</span><div><b>방법</b> — 드리블·패스·슛으로만 공 이동 (들고 뛰면 안 됨)</div></li>
+      </ul>
+      <div class="chips">
+        <span class="chip"><b>1891년</b> 제임스 네이스미스 고안</span>
+        <span class="chip">전 세계 인기 구기</span>
+        <span class="chip">실내·실외 모두 가능</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 경기장 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 경기장</span>
+      <h2>경기장 구조</h2>
+      <p class="desc">코트의 주요 선과 구역</p>
+      <div class="figure">
+        <svg viewBox="0 0 620 340" role="img" aria-label="농구 코트 도면">
+          <rect x="20" y="20" width="580" height="300" rx="6" fill="#f6efe2" stroke="#c79a5d" stroke-width="3"/>
+          <line x1="310" y1="20" x2="310" y2="320" stroke="#c79a5d" stroke-width="2.5"/>
+          <circle cx="310" cy="170" r="40" fill="none" stroke="#c79a5d" stroke-width="2.5"/>
+          <rect x="20" y="125" width="120" height="90" fill="rgba(47,109,240,.10)" stroke="#c79a5d" stroke-width="2"/>
+          <path d="M140,132 A38,38 0 0 1 140,208" fill="none" stroke="#c79a5d" stroke-width="2"/>
+          <path d="M20,55 L96,55 A150,150 0 0 1 96,285 L20,285" fill="none" stroke="#c79a5d" stroke-width="2.5"/>
+          <line x1="28" y1="148" x2="28" y2="192" stroke="var(--accent)" stroke-width="5"/>
+          <circle cx="42" cy="170" r="9" fill="none" stroke="#ea7317" stroke-width="3.5"/>
+          <rect x="480" y="125" width="120" height="90" fill="rgba(47,109,240,.10)" stroke="#c79a5d" stroke-width="2"/>
+          <path d="M480,132 A38,38 0 0 0 480,208" fill="none" stroke="#c79a5d" stroke-width="2"/>
+          <path d="M600,55 L524,55 A150,150 0 0 0 524,285 L600,285" fill="none" stroke="#c79a5d" stroke-width="2.5"/>
+          <line x1="592" y1="148" x2="592" y2="192" stroke="var(--accent)" stroke-width="5"/>
+          <circle cx="578" cy="170" r="9" fill="none" stroke="#ea7317" stroke-width="3.5"/>
+          <text x="316" y="38" font-size="13" fill="#8a6a3a">중앙선</text>
+          <text x="270" y="174" font-size="12" fill="#8a6a3a">센터서클</text>
+          <text x="62" y="174" font-size="12" fill="#1d4ed8" text-anchor="middle">제한구역</text>
+          <text x="150" y="112" font-size="12" fill="#8a6a3a">자유투선</text>
+          <text x="150" y="305" font-size="12" fill="#8a6a3a">3점 라인</text>
+          <text x="30" y="143" font-size="11" fill="#c2410c">바스켓</text>
+        </svg>
+        <figcaption>직사각형 코트 · 양 끝 바스켓 높이 3.05m · 좌우 대칭 구조</figcaption>
+      </div>
+      <div class="chips">
+        <span class="chip"><b>중앙선</b> 코트를 양분</span>
+        <span class="chip"><b>제한구역</b> 페인트존</span>
+        <span class="chip"><b>3점 라인</b> 밖 슛 = 3점</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 경기 방법 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 경기 방법</span>
+      <h2>시간 · 진행 규칙</h2>
+      <p class="desc">경기는 이렇게 흘러갑니다</p>
+      <div class="two">
+        <div class="box"><h3>⏱️ 경기 시간</h3><p>4쿼터로 진행(정규 10분/쿼터). 학교 수업은 시간·인원을 변형해 운영. 동점이면 연장전.</p></div>
+        <div class="box"><h3>🏁 경기 시작</h3><p>중앙서클에서 점프볼로 시작. 득점 후엔 상대팀이 엔드라인에서 스로인.</p></div>
+        <div class="box"><h3>⏳ 공격 제한 시간</h3><p>공을 잡으면 정해진 시간 안에 슛 시도(정규 24초). 시간 초과 시 공격권 상실.</p></div>
+        <div class="box"><h3>🔄 공수 전환</h3><p>슛·턴오버·리바운드로 공 소유가 바뀌면 즉시 공격↔수비 전환.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 포지션 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">전술 · 포지션</span>
+      <h2>5개 포지션</h2>
+      <p class="desc">역할을 나눠 코트를 효율적으로 사용</p>
+      <div class="split">
+        <div class="figure">
+          <svg viewBox="0 0 360 320" role="img" aria-label="농구 포지션 배치도">
+            <rect x="10" y="10" width="340" height="300" rx="6" fill="#f6efe2" stroke="#c79a5d" stroke-width="3"/>
+            <rect x="10" y="115" width="120" height="90" fill="rgba(47,109,240,.10)" stroke="#c79a5d" stroke-width="2"/>
+            <path d="M130,122 A38,38 0 0 1 130,198" fill="none" stroke="#c79a5d" stroke-width="2"/>
+            <path d="M10,46 L92,46 A165,165 0 0 1 92,274 L10,274" fill="none" stroke="#c79a5d" stroke-width="2.5"/>
+            <line x1="18" y1="138" x2="18" y2="182" stroke="var(--accent)" stroke-width="5"/>
+            <circle cx="32" cy="160" r="9" fill="none" stroke="#ea7317" stroke-width="3.5"/>
+            <g font-size="15" font-weight="800" fill="#fff" text-anchor="middle">
+              <circle cx="270" cy="160" r="18" fill="#2f6df0"/><text x="270" y="166">1</text>
+              <circle cx="225" cy="70" r="18" fill="#2f6df0"/><text x="225" y="76">2</text>
+              <circle cx="225" cy="250" r="18" fill="#2f6df0"/><text x="225" y="256">3</text>
+              <circle cx="120" cy="95" r="18" fill="#1d4ed8"/><text x="120" y="101">4</text>
+              <circle cx="95" cy="200" r="18" fill="#1d4ed8"/><text x="95" y="206">5</text>
+            </g>
+          </svg>
+          <figcaption>공격 시 기본 배치 (왼쪽 바스켓 공격)</figcaption>
+        </div>
+        <ul>
+          <li><span class="n">1</span><div><b>포인트가드(PG)</b> — 경기 조율, 패스 전개</div></li>
+          <li><span class="n">2</span><div><b>슈팅가드(SG)</b> — 외곽 슛, 득점</div></li>
+          <li><span class="n">3</span><div><b>스몰포워드(SF)</b> — 공수 만능</div></li>
+          <li><span class="n">4</span><div><b>파워포워드(PF)</b> — 골밑 싸움</div></li>
+          <li><span class="n">5</span><div><b>센터(C)</b> — 리바운드·수비 중심</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 득점 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 득점</span>
+      <h2>득점 방법</h2>
+      <p class="desc">어디서 넣느냐에 따라 점수가 다릅니다</p>
+      <div class="split">
+        <div class="figure">
+          <svg viewBox="0 0 360 320" role="img" aria-label="농구 득점 구역도">
+            <rect x="10" y="10" width="340" height="300" rx="6" fill="#f6efe2" stroke="#c79a5d" stroke-width="3"/>
+            <path d="M10,46 L92,46 A165,165 0 0 1 92,274 L10,274 Z" fill="rgba(22,163,74,.16)"/>
+            <path d="M10,46 L92,46 A165,165 0 0 1 92,274 L10,274" fill="none" stroke="#2f6df0" stroke-width="2.5"/>
+            <line x1="18" y1="138" x2="18" y2="182" stroke="var(--accent)" stroke-width="5"/>
+            <circle cx="32" cy="160" r="9" fill="none" stroke="#ea7317" stroke-width="3.5"/>
+            <text x="70" y="165" font-size="16" font-weight="800" fill="#15803d" text-anchor="middle">2점</text>
+            <text x="215" y="160" font-size="16" font-weight="800" fill="#1d4ed8" text-anchor="middle">3점 구역</text>
+          </svg>
+          <figcaption>3점 라인 안쪽 = 2점 · 바깥 = 3점 · 자유투 = 1점</figcaption>
+        </div>
+        <ul>
+          <li><span class="n">2</span><div><b>필드골</b> — 3점 라인 안에서 성공</div></li>
+          <li><span class="n">3</span><div><b>3점슛</b> — 3점 라인 밖에서 성공</div></li>
+          <li><span class="n">1</span><div><b>자유투</b> — 반칙으로 얻은 슛, 1개당 1점</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. 반칙 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 반칙</span>
+      <h2>자주 나오는 반칙</h2>
+      <p class="desc">알아두면 경기가 보인다</p>
+      <div class="two">
+        <div class="box warn"><h3>🚶 트래블링</h3><p>드리블 없이 3걸음 이상 이동. 가장 흔한 반칙.</p></div>
+        <div class="box warn"><h3>✋✋ 더블 드리블</h3><p>드리블을 멈췄다가 다시 시작. 두 손으로 잡았다 다시 튕기기.</p></div>
+        <div class="box warn"><h3>💥 파울</h3><p>상대를 밀거나 잡는 신체 접촉. 슛 동작 중이면 자유투.</p></div>
+        <div class="box warn"><h3>⏲️ 시간 위반</h3><p>3초 룰(제한구역)·24초 룰(공격 시간) 초과.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. 기술: 드리블 (사진) -->
+  <section class="slide">
+    <div class="media">
+      <figure class="photo">
+        <img src="../assets/img/bb-dribble.jpg" alt="농구 드리블 자세">
+        <figcaption>무릎을 굽힌 낮은 자세 · 시선은 앞 · 손목 스냅으로 강하게</figcaption>
+      </figure>
+      <div>
+        <span class="tag">핵심 기술 ①</span>
+        <h2>드리블</h2>
+        <p class="desc">공을 안전하게 운반하는 기본기</p>
+        <ul>
+          <li><span class="n">1</span><div><b>손목 스냅</b> — 손바닥이 아닌 손가락으로 공을 누르듯 튕긴다</div></li>
+          <li><span class="n">2</span><div><b>낮은 자세</b> — 무릎을 굽혀 공을 허리 아래로 낮게</div></li>
+          <li><span class="n">3</span><div><b>시선</b> — 공이 아닌 앞(코트·동료)을 본다</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. 기술: 패스 (사진) -->
+  <section class="slide">
+    <div class="media flip">
+      <div>
+        <span class="tag">핵심 기술 ②</span>
+        <h2>패스</h2>
+        <p class="desc">동료에게 빠르고 정확하게 연결</p>
+        <ul>
+          <li><span class="n">1</span><div><b>체스트 패스</b> — 가슴 앞에서 양손으로 밀어 받는 사람 가슴으로</div></li>
+          <li><span class="n">2</span><div><b>바운드 패스</b> — 바닥 2/3 지점에 튕겨 수비를 피해 연결</div></li>
+          <li><span class="n">3</span><div><b>받기</b> — 손을 펴 맞이하고 충격을 흡수하며 가슴으로 당긴다</div></li>
+        </ul>
+      </div>
+      <figure class="photo">
+        <img src="../assets/img/bb-pass.jpg" alt="농구 체스트 패스 자세">
+        <figcaption>양손으로 가슴 앞에서 앞으로 밀어내는 체스트 패스</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 10. 기술: 슛 (사진) -->
+  <section class="slide">
+    <div class="media">
+      <figure class="photo">
+        <img src="../assets/img/bb-shoot.jpg" alt="농구 슛 자세">
+        <figcaption>다리 힘을 손끝까지 — 마지막은 손목 스냅으로 마무리</figcaption>
+      </figure>
+      <div>
+        <span class="tag">핵심 기술 ③</span>
+        <h2>슛 (BEEF 원리)</h2>
+        <p class="desc">정확한 슛은 바른 자세에서 나옵니다</p>
+        <ul>
+          <li><span class="n">B</span><div><b>Balance</b> — 발은 어깨너비, 무릎을 살짝 굽혀 균형</div></li>
+          <li><span class="n">E</span><div><b>Eyes</b> — 시선은 바스켓(림 앞쪽)에 고정</div></li>
+          <li><span class="n">E</span><div><b>Elbow</b> — 슛 팔 팔꿈치는 90°, 몸 안쪽으로</div></li>
+          <li><span class="n">F</span><div><b>Follow</b> — 손목을 끝까지 꺾어 마무리</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. 기술: 레이업 (도해) -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">핵심 기술 ④</span>
+      <h2>레이업 슛</h2>
+      <p class="desc">달리며 바스켓 가까이에서 올려놓는 슛</p>
+      <div class="figure">
+        <svg viewBox="0 0 620 200" role="img" aria-label="레이업 스텝 도해">
+          <rect x="0" y="0" width="620" height="200" fill="#eef2f7"/>
+          <line x1="0" y1="170" x2="620" y2="170" stroke="#cbd2da" stroke-width="3"/>
+          <line x1="560" y1="30" x2="560" y2="70" stroke="#9aa4b0" stroke-width="5"/>
+          <circle cx="548" cy="62" r="11" fill="none" stroke="#ea7317" stroke-width="4"/>
+          <g font-size="12" font-weight="700" text-anchor="middle">
+            <ellipse cx="120" cy="150" rx="16" ry="9" fill="#2f6df0"/><text x="120" y="185" fill="#1d4ed8">①오른발</text>
+            <ellipse cx="250" cy="150" rx="16" ry="9" fill="#2f6df0"/><text x="250" y="185" fill="#1d4ed8">②왼발</text>
+            <ellipse cx="390" cy="120" rx="16" ry="9" fill="#1d4ed8"/><text x="390" y="100" fill="#1d4ed8">③점프!</text>
+          </g>
+          <path d="M250,148 Q330,40 470,55" fill="none" stroke="#ea7317" stroke-width="3" stroke-dasharray="6 5" marker-end="url(#la)"/>
+          <circle cx="470" cy="55" r="13" fill="#ea7317"/>
+          <text x="470" y="35" font-size="12" fill="#c2410c" text-anchor="middle" font-weight="700">백보드에 부드럽게</text>
+          <defs><marker id="la" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ea7317"/></marker></defs>
+        </svg>
+        <figcaption>"오른발 → 왼발 → 점프" 리듬으로 올라가 백보드 사각형 모서리를 겨냥</figcaption>
+      </div>
+      <p class="note">오른쪽에서 들어가면 오른손, 왼쪽에서 들어가면 왼손으로 올리는 것이 기본입니다.</p>
+    </div>
+  </section>
+
+  <!-- 12. 안전 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">안전 수칙</span>
+      <h2>안전하게 운동하기</h2>
+      <p class="desc">부상 없이 즐기는 것이 가장 중요합니다</p>
+      <div class="two">
+        <div class="box warn"><h3>⚠️ 발목·무릎</h3><p>점프 착지가 잦아 염좌 위험. 준비운동으로 발목을 풀고 무릎을 굽혀 부드럽게 착지.</p></div>
+        <div class="box warn"><h3>⚠️ 손가락</h3><p>패스를 잘못 받으면 부상. 손끝이 아닌 손바닥으로 맞이하기.</p></div>
+        <div class="box warn"><h3>⚠️ 충돌</h3><p>좁은 공간 충돌 주의. 주변을 살피고 무리한 몸싸움 금지.</p></div>
+        <div class="box"><h3>✅ 준비물</h3><p>운동화 끈 단단히, 손톱 짧게, 충분한 수분 섭취와 준비운동.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. 평가 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">수행 평가</span>
+      <h2>평가 기준</h2>
+      <p class="desc">예시 루브릭 (학교 상황에 맞게 조정)</p>
+      <table>
+        <thead><tr><th>영역</th><th>평가 내용</th><th>배점</th></tr></thead>
+        <tbody>
+          <tr><td>기능</td><td>레이업 슛 성공 (5회 중)</td><td>30</td></tr>
+          <tr><td>기능</td><td>지그재그 드리블 통과 기록</td><td>20</td></tr>
+          <tr><td>경기</td><td>게임 중 패스·수비 참여도</td><td>30</td></tr>
+          <tr><td>태도</td><td>규칙 준수 · 협동 · 안전</td><td>20</td></tr>
+        </tbody>
+      </table>
+      <p class="note">기능·경기·태도를 고루 평가해 실력과 참여를 함께 반영합니다.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="이전">‹</button>
+  <div class="dots"></div>
+  <button id="next" aria-label="다음">›</button>
+</div>
+
+<script src="../assets/slides.js"></script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>축구 · 체육 교과서</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body style="--accent:var(--c-gugi)">
+
+<div class="topbar">
+  <a class="home" href="../index.html">📖 목차</a>
+  <span class="title">⚽ 축구</span>
+  <span class="counter"></span>
+</div>
+<div class="progress"></div>
+
+<div class="deck">
+
+  <!-- 1. 표지 -->
+  <section class="slide cover active">
+    <img class="cover-bg" src="../assets/img/soccer.png" alt="축구장">
+    <div class="cover-shade"></div>
+    <div class="kicker">영역형 경쟁 · 구기 종목</div>
+    <div class="emoji">⚽</div>
+    <h1>축구</h1>
+    <p class="lead">11명이 한 팀이 되어 손을 제외한 신체로 공을 다뤄 상대 골에 넣는 경기. 세계에서 가장 인기 있는 스포츠입니다.</p>
+  </section>
+
+  <!-- 2. 소개 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">종목 소개</span>
+      <h2>축구란?</h2>
+      <p class="desc">발로 공을 다루는 대표적인 영역형 경쟁 스포츠</p>
+      <ul>
+        <li><span class="n">1</span><div><b>목표</b> — 손을 제외한 신체로 공을 다뤄 상대 골에 넣기</div></li>
+        <li><span class="n">2</span><div><b>인원</b> — 한 팀 11명(골키퍼 포함)</div></li>
+        <li><span class="n">3</span><div><b>특징</b> — 골키퍼만 페널티 박스 안에서 손 사용 가능</div></li>
+      </ul>
+      <div class="chips">
+        <span class="chip">세계 1위 인기 구기</span>
+        <span class="chip"><b>FIFA</b> 월드컵</span>
+        <span class="chip">넓은 잔디 경기장</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 경기장 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 경기장</span>
+      <h2>경기장 구조</h2>
+      <p class="desc">필드의 주요 선과 구역</p>
+      <div class="figure">
+        <svg viewBox="0 0 640 380" role="img" aria-label="축구 경기장 도면">
+          <rect x="20" y="20" width="600" height="340" rx="4" fill="#4a8f50" stroke="#fff" stroke-width="3"/>
+          <rect x="20" y="20" width="300" height="340" fill="#458b4c"/>
+          <!-- 하프라인/센터서클 -->
+          <line x1="320" y1="20" x2="320" y2="360" stroke="#fff" stroke-width="2.5"/>
+          <circle cx="320" cy="190" r="48" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <circle cx="320" cy="190" r="3" fill="#fff"/>
+          <!-- 왼쪽 박스 -->
+          <rect x="20" y="100" width="110" height="180" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <rect x="20" y="150" width="42" height="80" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <circle cx="95" cy="190" r="3" fill="#fff"/>
+          <path d="M130,154 A50,50 0 0 1 130,226" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <rect x="8" y="162" width="12" height="56" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <!-- 오른쪽 박스 -->
+          <rect x="510" y="100" width="110" height="180" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <rect x="578" y="150" width="42" height="80" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <circle cx="545" cy="190" r="3" fill="#fff"/>
+          <path d="M510,154 A50,50 0 0 0 510,226" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <rect x="620" y="162" width="12" height="56" fill="none" stroke="#fff" stroke-width="2.5"/>
+          <!-- 코너 아크 -->
+          <path d="M20,30 A10,10 0 0 1 30,20" fill="none" stroke="#fff" stroke-width="2"/>
+          <path d="M610,20 A10,10 0 0 1 620,30" fill="none" stroke="#fff" stroke-width="2"/>
+          <path d="M30,360 A10,10 0 0 1 20,350" fill="none" stroke="#fff" stroke-width="2"/>
+          <path d="M620,350 A10,10 0 0 1 610,360" fill="none" stroke="#fff" stroke-width="2"/>
+          <!-- 라벨 -->
+          <text x="326" y="16" font-size="13" fill="#eaffea">하프라인</text>
+          <text x="320" y="194" font-size="12" fill="#eaffea" text-anchor="middle">센터서클</text>
+          <text x="75" y="295" font-size="12" fill="#eaffea" text-anchor="middle">페널티 박스</text>
+          <text x="41" y="245" font-size="11" fill="#eaffea" text-anchor="middle">골 에어리어</text>
+          <text x="95" y="178" font-size="10.5" fill="#eaffea" text-anchor="middle">페널티 마크</text>
+        </svg>
+        <figcaption>직사각형 잔디 경기장 · 양 끝 골 · 좌우 대칭 구조</figcaption>
+      </div>
+      <div class="chips">
+        <span class="chip"><b>하프라인</b> 경기장 양분</span>
+        <span class="chip"><b>페널티 박스</b> GK 손 사용 구역</span>
+        <span class="chip"><b>페널티 마크</b> PK 지점</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. 경기 방법 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 경기 방법</span>
+      <h2>시간 · 진행 규칙</h2>
+      <p class="desc">경기는 이렇게 흘러갑니다</p>
+      <div class="two">
+        <div class="box"><h3>⏱️ 경기 시간</h3><p>전·후반 각 45분(정규). 학교 수업은 시간·인원·코트를 변형해 운영.</p></div>
+        <div class="box"><h3>🏁 경기 시작</h3><p>센터서클에서 킥오프로 시작. 득점 후엔 실점한 팀이 다시 킥오프.</p></div>
+        <div class="box"><h3>🙌 스로인</h3><p>공이 옆줄 밖으로 나가면 두 손으로 머리 위에서 던져 넣기.</p></div>
+        <div class="box"><h3>🧤 골키퍼</h3><p>자기 페널티 박스 안에서만 손 사용 가능. 나머지 선수는 손 사용 금지(핸드볼).</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 포지션 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">전술 · 포지션</span>
+      <h2>포지션 (4-4-2)</h2>
+      <p class="desc">역할을 나눠 공격과 수비를 분담</p>
+      <div class="split wide">
+        <div class="figure">
+          <svg viewBox="0 0 380 340" role="img" aria-label="축구 포메이션 도면">
+            <rect x="10" y="10" width="360" height="320" rx="4" fill="#4a8f50" stroke="#fff" stroke-width="2.5"/>
+            <line x1="10" y1="170" x2="370" y2="170" stroke="#fff" stroke-width="2"/>
+            <circle cx="190" cy="170" r="40" fill="none" stroke="#fff" stroke-width="2"/>
+            <rect x="120" y="10" width="140" height="48" fill="none" stroke="#fff" stroke-width="2"/>
+            <g text-anchor="middle" font-size="12" font-weight="800" fill="#fff">
+              <circle cx="190" cy="300" r="15" fill="#eab308"/><text x="190" y="305">GK</text>
+              <circle cx="70" cy="250" r="15" fill="#2563eb"/><text x="70" y="255">DF</text>
+              <circle cx="140" cy="255" r="15" fill="#2563eb"/><text x="140" y="260">DF</text>
+              <circle cx="240" cy="255" r="15" fill="#2563eb"/><text x="240" y="260">DF</text>
+              <circle cx="310" cy="250" r="15" fill="#2563eb"/><text x="310" y="255">DF</text>
+              <circle cx="70" cy="165" r="15" fill="#16a34a"/><text x="70" y="170">MF</text>
+              <circle cx="140" cy="160" r="15" fill="#16a34a"/><text x="140" y="165">MF</text>
+              <circle cx="240" cy="160" r="15" fill="#16a34a"/><text x="240" y="165">MF</text>
+              <circle cx="310" cy="165" r="15" fill="#16a34a"/><text x="310" y="170">MF</text>
+              <circle cx="150" cy="75" r="15" fill="#dc2626"/><text x="150" y="80">FW</text>
+              <circle cx="230" cy="75" r="15" fill="#dc2626"/><text x="230" y="80">FW</text>
+            </g>
+          </svg>
+          <figcaption>수비 4 · 미드필더 4 · 공격 2 의 기본 대형</figcaption>
+        </div>
+        <ul>
+          <li><span class="n">🧤</span><div><b>GK 골키퍼</b> — 골문을 지킴, 손 사용</div></li>
+          <li><span class="n">🛡️</span><div><b>DF 수비수</b> — 상대 공격 차단</div></li>
+          <li><span class="n">⚙️</span><div><b>MF 미드필더</b> — 공수 연결, 경기 조율</div></li>
+          <li><span class="n">🎯</span><div><b>FW 공격수</b> — 득점 담당</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. 오프사이드 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 핵심</span>
+      <h2>오프사이드</h2>
+      <p class="desc">축구에서 가장 헷갈리는 규칙, 그림으로 이해하기</p>
+      <div class="figure">
+        <svg viewBox="0 0 640 280" role="img" aria-label="오프사이드 도해">
+          <rect x="0" y="0" width="640" height="280" fill="#4a8f50"/>
+          <line x1="600" y1="20" x2="600" y2="260" stroke="#fff" stroke-width="3"/>
+          <text x="616" y="145" font-size="13" fill="#fff" text-anchor="middle" transform="rotate(90 620 140)">골라인</text>
+          <!-- 진행 방향 -->
+          <path d="M40,30 L120,30" stroke="#ffe08a" stroke-width="3" marker-end="url(#dir)"/>
+          <text x="44" y="22" font-size="12" fill="#ffe08a">공격 방향</text>
+          <!-- 패스 -->
+          <circle cx="150" cy="160" r="9" fill="#fff" stroke="#222" stroke-width="2"/>
+          <text x="150" y="200" font-size="12" fill="#fff" text-anchor="middle">패스하는 선수</text>
+          <!-- 수비수(뒤에서 두번째) + 기준선 -->
+          <circle cx="430" cy="150" r="13" fill="#2563eb"/><text x="430" y="155" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">D</text>
+          <line x1="430" y1="20" x2="430" y2="260" stroke="#ffe08a" stroke-width="2" stroke-dasharray="7 6"/>
+          <text x="430" y="278" font-size="11.5" fill="#ffe08a" text-anchor="middle">패스 순간 기준선</text>
+          <!-- 공격수(오프사이드 위치) -->
+          <circle cx="500" cy="150" r="13" fill="#dc2626"/><text x="500" y="155" font-size="11" fill="#fff" text-anchor="middle" font-weight="800">A</text>
+          <text x="500" y="128" font-size="11.5" fill="#ffd0d0" text-anchor="middle">⚠ 오프사이드</text>
+          <defs><marker id="dir" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ffe08a"/></marker></defs>
+        </svg>
+        <figcaption>패스되는 순간, 공격수(A)가 뒤에서 두 번째 수비수(D)보다 골라인에 가까우면 오프사이드</figcaption>
+      </div>
+      <p class="note">공보다 앞에 있고, 수비보다 앞서 있을 때만 반칙입니다. 우리 진영이거나 공과 나란하면 오프사이드가 아닙니다.</p>
+    </div>
+  </section>
+
+  <!-- 7. 반칙 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">규칙 · 반칙</span>
+      <h2>반칙과 카드</h2>
+      <p class="desc">알아두면 경기가 보인다</p>
+      <div class="two">
+        <div class="box warn"><h3>✋ 핸드볼</h3><p>골키퍼 외 선수가 손·팔로 공을 다루면 반칙.</p></div>
+        <div class="box warn"><h3>🦵 파울</h3><p>상대를 차거나 밀거나 넘어뜨림 → 상대팀 프리킥.</p></div>
+        <div class="box warn"><h3>🟨 옐로카드</h3><p>경고. 한 경기 2장이면 퇴장.</p></div>
+        <div class="box warn"><h3>🟥 레드카드</h3><p>즉시 퇴장. 그 팀은 한 명 적게 싸움.</p></div>
+      </div>
+      <p class="note">페널티 박스 안에서 수비가 반칙하면 → <b>페널티킥(PK)</b>이 주어집니다.</p>
+    </div>
+  </section>
+
+  <!-- 8. 기술: 패스·트래핑 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">핵심 기술</span>
+      <h2>패스 &amp; 트래핑</h2>
+      <p class="desc">공을 정확히 주고받는 기본기</p>
+      <ul>
+        <li><span class="n">①</span><div><b>인사이드 패스</b> — 발 안쪽(복사뼈 아래)으로 밀어 정확하게. 짧고 안정적</div></li>
+        <li><span class="n">②</span><div><b>트래핑(볼 컨트롤)</b> — 오는 공을 발·가슴·허벅지로 부드럽게 멈춰 내 발 앞에 두기</div></li>
+        <li><span class="n">③</span><div><b>시선</b> — 공을 받기 전 주변(동료·수비)을 미리 확인</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. 기술: 킥 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">핵심 기술</span>
+      <h2>킥 (슛)</h2>
+      <p class="desc">발의 어느 부분으로 차느냐가 핵심</p>
+      <div class="split wide">
+        <div class="figure">
+          <svg viewBox="0 0 360 260" role="img" aria-label="킥 부위 도해">
+            <rect x="0" y="0" width="360" height="260" fill="#eef2f7"/>
+            <line x1="0" y1="220" x2="360" y2="220" stroke="#cbd2da" stroke-width="3"/>
+            <!-- 공 -->
+            <circle cx="250" cy="195" r="26" fill="#fff" stroke="#222" stroke-width="2"/>
+            <path d="M250,169 l8,18 -8,14 -8,-14 z" fill="#222"/>
+            <!-- 디딤발 -->
+            <ellipse cx="195" cy="212" rx="16" ry="8" fill="#2563eb"/>
+            <text x="195" y="245" font-size="11" fill="#1f3a8a" text-anchor="middle">디딤발(공 옆)</text>
+            <!-- 차는 발 인사이드 -->
+            <path d="M150,150 q40,10 55,40" stroke="#16a34a" stroke-width="9" fill="none" stroke-linecap="round"/>
+            <path d="M210,188 L236,192" stroke="#16a34a" stroke-width="3" marker-end="url(#k1)"/>
+            <text x="120" y="140" font-size="12" fill="#16a34a" font-weight="700">인사이드</text>
+            <!-- 인스텝 화살표 -->
+            <path d="M230,150 L246,176" stroke="#ea7317" stroke-width="3" marker-end="url(#k2)"/>
+            <text x="300" y="120" font-size="12" fill="#c2410c" font-weight="700" text-anchor="end">인스텝(발등)</text>
+            <defs>
+              <marker id="k1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#16a34a"/></marker>
+              <marker id="k2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ea7317"/></marker>
+            </defs>
+          </svg>
+          <figcaption>디딤발은 공 옆에, 시선은 공 — 차는 부위로 세기·방향 조절</figcaption>
+        </div>
+        <ul>
+          <li><span class="n">🟢</span><div><b>인사이드 킥</b> — 발 안쪽, 정확한 패스·짧은 슛</div></li>
+          <li><span class="n">🟠</span><div><b>인스텝 킥</b> — 발등, 강하고 멀리 가는 슛</div></li>
+          <li><span class="n">👁️</span><div><b>마무리</b> — 차는 순간 공을 끝까지 보고 발끝을 고정</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. 기술: 드리블 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">핵심 기술</span>
+      <h2>드리블</h2>
+      <p class="desc">공을 발 가까이 두고 운반하기</p>
+      <div class="figure">
+        <svg viewBox="0 0 620 180" role="img" aria-label="드리블 콘 도해">
+          <rect x="0" y="0" width="620" height="180" fill="#4a8f50"/>
+          <!-- 콘 -->
+          <g fill="#ea7317">
+            <path d="M150,120 l12,-40 12,40 z"/><path d="M300,120 l12,-40 12,40 z"/><path d="M450,120 l12,-40 12,40 z"/>
+          </g>
+          <!-- 지그재그 경로 -->
+          <path d="M40,100 Q120,40 162,100 Q230,150 312,100 Q380,40 462,100 Q540,150 590,100"
+                fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#dr)"/>
+          <circle cx="40" cy="100" r="9" fill="#fff" stroke="#222" stroke-width="2"/>
+          <text x="300" y="165" font-size="12" fill="#eaffea" text-anchor="middle">콘 사이를 지그재그로 — 공은 항상 발 한 걸음 안에</text>
+          <defs><marker id="dr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#fff"/></marker></defs>
+        </svg>
+        <figcaption>발 안쪽·바깥쪽을 번갈아 터치하며 공을 가까이 통제</figcaption>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. 안전 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">안전 수칙</span>
+      <h2>안전하게 운동하기</h2>
+      <p class="desc">부상 없이 즐기는 것이 가장 중요합니다</p>
+      <div class="two">
+        <div class="box warn"><h3>⚠️ 발목·무릎</h3><p>방향 전환이 잦아 염좌 위험. 준비운동으로 충분히 풀기.</p></div>
+        <div class="box warn"><h3>⚠️ 충돌·태클</h3><p>무리한 태클·몸싸움 금지. 상대 발을 차지 않기.</p></div>
+        <div class="box warn"><h3>⚠️ 정강이</h3><p>정강이 보호대(신가드) 착용 권장.</p></div>
+        <div class="box"><h3>✅ 준비물</h3><p>축구화 끈 단단히, 충분한 준비운동과 수분 섭취.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. 평가 -->
+  <section class="slide">
+    <div class="content">
+      <span class="tag">수행 평가</span>
+      <h2>평가 기준</h2>
+      <p class="desc">예시 루브릭 (학교 상황에 맞게 조정)</p>
+      <table>
+        <thead><tr><th>영역</th><th>평가 내용</th><th>배점</th></tr></thead>
+        <tbody>
+          <tr><td>기능</td><td>인사이드 패스 정확도 (목표물 맞히기)</td><td>30</td></tr>
+          <tr><td>기능</td><td>콘 지그재그 드리블 기록</td><td>20</td></tr>
+          <tr><td>경기</td><td>게임 중 패스·움직임·협동</td><td>30</td></tr>
+          <tr><td>태도</td><td>규칙 준수 · 페어플레이 · 안전</td><td>20</td></tr>
+        </tbody>
+      </table>
+      <p class="note">기능·경기·태도를 고루 평가해 실력과 참여를 함께 반영합니다.</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="이전">‹</button>
+  <div class="dots"></div>
+  <button id="next" aria-label="다음">›</button>
+</div>
+
+<script src="../assets/slides.js"></script>
+</body>
+</html>
