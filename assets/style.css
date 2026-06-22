@@ -200,39 +200,39 @@ body:has(.deck) .toc-btn{display:flex}
 
 /* Slide header */
 .tag{
-  display:inline-block;font-size:11px;font-weight:800;
+  display:inline-block;font-size:13px;font-weight:800;
   letter-spacing:.14em;text-transform:uppercase;
   color:var(--accent);
   padding:0;margin-bottom:14px;
   background:none;border:none;border-radius:0;
 }
 .slide h2{
-  font-family:var(--serif);font-size:34px;font-weight:900;
+  font-family:var(--serif);font-size:clamp(32px, 4.5vw, 46px);font-weight:900;
   letter-spacing:-.03em;line-height:1.2;
   position:relative;z-index:1;
 }
 .slide .desc{
-  color:var(--muted);font-size:15px;margin-top:8px;margin-bottom:26px;
+  color:var(--muted);font-size:clamp(16px, 2vw, 20px);margin-top:10px;margin-bottom:28px;
   font-weight:400;line-height:1.7;
 }
 
 /* Numbered list - editorial style */
 .slide ul{list-style:none;display:flex;flex-direction:column;gap:0}
 .slide li{
-  display:flex;gap:16px;align-items:baseline;font-size:16px;color:var(--ink-soft);
+  display:flex;gap:18px;align-items:baseline;font-size:clamp(17px, 2vw, 20px);color:var(--ink-soft);
   background:transparent;border:none;border-bottom:1px solid var(--line);
-  border-radius:0;padding:16px 0;
-  box-shadow:none;line-height:1.6;
+  border-radius:0;padding:18px 0;
+  box-shadow:none;line-height:1.7;
 }
 .slide li:last-child{border-bottom:none}
 .slide li .n{
   flex:0 0 auto;
-  font-family:var(--serif);font-size:22px;font-weight:900;
+  font-family:var(--serif);font-size:clamp(24px, 3vw, 30px);font-weight:900;
   color:var(--accent);background:none;border-radius:0;
   width:auto;height:auto;display:inline;
   box-shadow:none;
 }
-.slide li b{color:var(--ink);font-weight:700}
+.slide li b{color:var(--ink);font-weight:700;font-size:clamp(17px, 2vw, 21px)}
 
 /* Two-column boxes */
 .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -241,10 +241,10 @@ body:has(.deck) .toc-btn{display:flex}
   background:var(--card);border:1px solid var(--line);padding:20px;
   box-shadow:none;border-radius:0;
 }
-.box h3{font-family:var(--serif);font-size:16px;margin-bottom:10px;
+.box h3{font-family:var(--serif);font-size:clamp(17px, 2vw, 21px);margin-bottom:12px;
   display:flex;align-items:center;gap:8px;font-weight:700;
-  border-bottom:1px solid var(--line-soft);padding-bottom:8px}
-.box p{font-size:14px;color:var(--muted);line-height:1.7}
+  border-bottom:1px solid var(--line-soft);padding-bottom:10px}
+.box p{font-size:clamp(15px, 1.8vw, 18px);color:var(--muted);line-height:1.7}
 .warn{background:#fffbf7;border-color:var(--accent)}
 .warn h3{color:var(--accent)}
 
@@ -264,10 +264,10 @@ body:has(.deck) .toc-btn{display:flex}
 .photo figcaption{
   position:absolute;left:0;right:0;bottom:0;padding:24px 18px 14px;
   background:linear-gradient(transparent,rgba(0,0,0,.8));
-  color:#fff;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:#fff;font-size:14px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
 }
 .media .tag{margin-bottom:10px}
-.media h2{font-size:28px}
+.media h2{font-size:clamp(28px, 3.5vw, 40px)}
 
 /* Figure (SVG diagrams) */
 .figure{background:var(--card);border:1px solid var(--line);padding:20px;
@@ -280,23 +280,23 @@ body:has(.deck) .toc-btn{display:flex}
 .split ul{width:100%}
 
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
-.chip{font-size:13px;background:var(--card);border:1px solid var(--line);
-  padding:8px 16px;font-weight:500;border-radius:0}
+.chip{font-size:clamp(14px, 1.6vw, 16px);background:var(--card);border:1px solid var(--line);
+  padding:10px 18px;font-weight:500;border-radius:0}
 .chip b{color:var(--accent);font-weight:800}
 .note{
-  font-size:14px;color:var(--ink-soft);margin-top:20px;padding:14px 18px;
+  font-size:clamp(15px, 1.8vw, 18px);color:var(--ink-soft);margin-top:20px;padding:16px 20px;
   background:#fffbf7;border-left:3px solid var(--accent);border-radius:0;
 }
 .note b{color:var(--accent)}
 svg text{font-family:var(--sans)}
 
 /* Table - editorial */
-table{width:100%;border-collapse:collapse;font-size:14px;border-radius:0;
+table{width:100%;border-collapse:collapse;font-size:clamp(15px, 1.8vw, 18px);border-radius:0;
   box-shadow:none;overflow:visible}
-th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line)}
+th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line)}
 thead th{
   background:var(--ink);color:#fff;font-weight:700;
-  letter-spacing:.02em;font-size:12px;text-transform:uppercase;
+  letter-spacing:.02em;font-size:clamp(13px, 1.5vw, 15px);text-transform:uppercase;
 }
 tbody tr:last-child td{border-bottom:none}
 tbody tr:nth-child(even){background:#f9f9f9}
@@ -314,11 +314,11 @@ td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums;f
 }
 .slide.cover .emoji{font-size:56px;margin:12px 0 4px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5))}
 .slide.cover h1{
-  font-family:var(--serif);font-size:50px;font-weight:900;
+  font-family:var(--serif);font-size:clamp(42px, 6vw, 64px);font-weight:900;
   letter-spacing:-.04em;line-height:1.1;
 }
 .slide.cover .lead{
-  margin-top:18px;font-size:16px;opacity:.8;max-width:560px;line-height:1.8;font-weight:400;
+  margin-top:18px;font-size:clamp(17px, 2vw, 22px);opacity:.8;max-width:620px;line-height:1.8;font-weight:400;
 }
 
 /* ===================== SLIDE UI ===================== */
