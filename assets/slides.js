@@ -67,6 +67,117 @@
     if (h >= 1 && h <= total && h - 1 !== cur) show(h - 1);
   });
 
+  // ===== 목차(TOC) 오버뷰 =====
+  // 버튼 생성
+  var tocBtn = document.createElement('button');
+  tocBtn.className = 'toc-btn';
+  tocBtn.setAttribute('aria-label', '목차');
+  tocBtn.innerHTML = '☰';
+  document.body.appendChild(tocBtn);
+
+  // 오버레이
+  var tocOverlay = document.createElement('div');
+  tocOverlay.className = 'toc-overlay';
+  document.body.appendChild(tocOverlay);
+
+  // 패널
+  var tocPanel = document.createElement('div');
+  tocPanel.className = 'toc-panel';
+
+  var tocHeader = document.createElement('div');
+  tocHeader.className = 'toc-header';
+  tocHeader.innerHTML = '<h3>📑 슬라이드 목차</h3>';
+  var tocClose = document.createElement('button');
+  tocClose.className = 'toc-close';
+  tocClose.innerHTML = '✕';
+  tocHeader.appendChild(tocClose);
+  tocPanel.appendChild(tocHeader);
+
+  var tocGrid = document.createElement('div');
+  tocGrid.className = 'toc-grid';
+
+  slides.forEach(function (slide, i) {
+    var card = document.createElement('div');
+    card.className = 'toc-card';
+    if (slide.classList.contains('cover')) card.classList.add('is-cover');
+
+    // 썸네일 내용 추출
+    var thumb = document.createElement('div');
+    thumb.className = 'toc-thumb';
+
+    var emoji = slide.querySelector('.emoji');
+    var tag = slide.querySelector('.tag');
+    var h2 = slide.querySelector('h2');
+    var h1 = slide.querySelector('h1');
+    var title = h2 ? h2.textContent : (h1 ? h1.textContent : '슬라이드 ' + (i + 1));
+
+    if (emoji) {
+      var me = document.createElement('div');
+      me.className = 'mini-emoji';
+      me.textContent = emoji.textContent;
+      thumb.appendChild(me);
+    }
+    if (tag) {
+      var mt = document.createElement('div');
+      mt.className = 'mini-tag';
+      mt.textContent = tag.textContent;
+      thumb.appendChild(mt);
+    }
+    var mtitle = document.createElement('div');
+    mtitle.className = 'mini-title';
+    mtitle.textContent = title;
+    thumb.appendChild(mtitle);
+
+    card.appendChild(thumb);
+
+    // 하단 번호 + 라벨
+    var footer = document.createElement('div');
+    footer.className = 'toc-card-footer';
+    var num = document.createElement('span');
+    num.className = 'num';
+    num.textContent = i + 1;
+    var label = document.createElement('span');
+    label.className = 'label';
+    label.textContent = title.length > 20 ? title.substring(0, 20) + '…' : title;
+    footer.appendChild(num);
+    footer.appendChild(label);
+    card.appendChild(footer);
+
+    card.addEventListener('click', function () {
+      go(i);
+      closeToc();
+    });
+
+    tocGrid.appendChild(card);
+  });
+
+  tocPanel.appendChild(tocGrid);
+  document.body.appendChild(tocPanel);
+
+  function openToc() {
+    // 현재 슬라이드 표시
+    var cards = tocGrid.querySelectorAll('.toc-card');
+    cards.forEach(function (c, k) { c.classList.toggle('current', k === cur); });
+    tocOverlay.classList.add('open');
+    tocPanel.classList.add('open');
+  }
+  function closeToc() {
+    tocOverlay.classList.remove('open');
+    tocPanel.classList.remove('open');
+  }
+
+  tocBtn.addEventListener('click', openToc);
+  tocClose.addEventListener('click', closeToc);
+  tocOverlay.addEventListener('click', closeToc);
+
+  // ESC로 닫기
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && tocPanel.classList.contains('open')) {
+      closeToc();
+      e.preventDefault();
+    }
+  });
+
   // 시작 슬라이드 (해시 지원)
   var start = parseInt((location.hash || '').replace('#', ''), 10);
   show(start >= 1 && start <= total ? start - 1 : 0);
