@@ -287,6 +287,38 @@ body {
   background: var(--gray-light);
 }
 
+/* Level Tabs */
+.level-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: -40px auto 40px;
+  max-width: 360px;
+}
+.level-tab {
+  flex: 1;
+  padding: 14px 0;
+  text-align: center;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid var(--gray-light);
+  background: var(--white);
+  color: var(--gray-mid);
+  transition: all 0.2s;
+}
+.level-tab:first-child { border-right: none; }
+.level-tab.active {
+  background: var(--orange);
+  color: var(--white);
+  border-color: var(--orange);
+}
+.level-tab:hover:not(.active) {
+  background: var(--orange-light);
+  color: var(--orange);
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--gray-light);
@@ -336,8 +368,13 @@ body {
     <li><a href="#new">뉴스포츠</a></li>
     <li><a href="#expression">표현 &middot; 기타</a></li>
   </ul>
-  <span class="nav-info">2/27 종목 준비 완료</span>
+  <span class="nav-info">26종목</span>
 </nav>
+
+<div class="level-tabs" id="levelTabs">
+  <div class="level-tab active" data-level="ms">중학교</div>
+  <div class="level-tab" data-level="hs">고등학교 심화</div>
+</div>
 
 <!-- 구기 종목 -->
 <div class="section" id="ball">
@@ -557,5 +594,34 @@ body {
   <p><a href="https://www.instagram.com/kimju.zip" target="_blank" style="color:var(--orange);font-weight:600;">@kimju.zip</a></p>
 </footer>
 
+<script>
+(function(){
+  var tabs = document.querySelectorAll('.level-tab');
+  var cards = document.querySelectorAll('.card-grid a.card');
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      var level = tab.getAttribute('data-level');
+
+      cards.forEach(function(card){
+        var href = card.getAttribute('href');
+        if(level === 'hs'){
+          // Switch to advanced version
+          if(href.indexOf('-adv.html') === -1){
+            card.setAttribute('data-ms-href', href);
+            card.setAttribute('href', href.replace('.html', '-adv.html'));
+          }
+        } else {
+          // Switch back to middle school version
+          var msHref = card.getAttribute('data-ms-href');
+          if(msHref) card.setAttribute('href', msHref);
+        }
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
