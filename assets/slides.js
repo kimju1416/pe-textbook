@@ -202,6 +202,136 @@
     }
   });
 
+  // ===== 인터랙티브 O/X 퀴즈 =====
+  (function initQuiz() {
+    // Find all <li> elements whose <span class="n"> text matches Q1~Q9
+    var quizItems = Array.prototype.slice.call(document.querySelectorAll('.slide li'));
+    var quizBySlide = {};
+
+    quizItems.forEach(function (li) {
+      var nSpan = li.querySelector('.n');
+      if (!nSpan || !/^Q\d+$/i.test(nSpan.textContent.trim())) return;
+
+      var divEl = li.querySelector('div');
+      if (!divEl) return;
+
+      // Parse: <b>질문</b> — O. 해설  or  <b>질문</b> — X. 해설
+      var html = divEl.innerHTML;
+      var bMatch = divEl.querySelector('b');
+      if (!bMatch) return;
+      var question = bMatch.textContent;
+
+      // Get text after </b>
+      var afterB = html.substring(html.indexOf('</b>') + 4).trim();
+      // Match pattern: — O. explanation  or  — X. explanation
+      var m = afterB.match(/^[\s—–-]+\s*([OX])\.\s*([\s\S]*)$/);
+      if (!m) return;
+
+      var correctAnswer = m[1]; // "O" or "X"
+      var explanation = m[2].trim();
+
+      // Find which slide this belongs to
+      var slideEl = li.closest('.slide');
+      if (!slideEl) return;
+      var slideIdx = slides.indexOf(slideEl);
+      if (!quizBySlide[slideIdx]) quizBySlide[slideIdx] = [];
+      quizBySlide[slideIdx].push({ li: li, question: question, correct: correctAnswer, explanation: explanation, nSpan: nSpan });
+    });
+
+    // Rebuild each quiz item
+    Object.keys(quizBySlide).forEach(function (sIdx) {
+      var items = quizBySlide[sIdx];
+      var answered = 0;
+      var score = 0;
+      var totalQ = items.length;
+      var slideEl = slides[parseInt(sIdx, 10)];
+      var ulEl = items[0].li.parentElement;
+
+      items.forEach(function (item) {
+        var li = item.li;
+        li.className = 'quiz-item';
+
+        var qLabel = item.nSpan.textContent.trim();
+        li.innerHTML = '';
+
+        var span = document.createElement('span');
+        span.className = 'n';
+        span.textContent = qLabel;
+        li.appendChild(span);
+
+        var wrapper = document.createElement('div');
+
+        var qDiv = document.createElement('div');
+        qDiv.className = 'quiz-q';
+        qDiv.textContent = item.question;
+        wrapper.appendChild(qDiv);
+
+        var btnsDiv = document.createElement('div');
+        btnsDiv.className = 'quiz-btns';
+
+        var btnO = document.createElement('button');
+        btnO.className = 'quiz-btn';
+        btnO.setAttribute('data-choice', 'O');
+        btnO.textContent = 'O';
+
+        var btnX = document.createElement('button');
+        btnX.className = 'quiz-btn';
+        btnX.setAttribute('data-choice', 'X');
+        btnX.textContent = 'X';
+
+        btnsDiv.appendChild(btnO);
+        btnsDiv.appendChild(btnX);
+        wrapper.appendChild(btnsDiv);
+
+        var ansDiv = document.createElement('div');
+        ansDiv.className = 'quiz-answer';
+        ansDiv.setAttribute('data-correct', item.correct);
+        ansDiv.textContent = item.explanation;
+        wrapper.appendChild(ansDiv);
+
+        li.appendChild(wrapper);
+
+        // Click handler
+        function handleClick(e) {
+          var btn = e.currentTarget;
+          var choice = btn.getAttribute('data-choice');
+          var isCorrect = (choice === item.correct);
+
+          // Disable both buttons
+          btnO.classList.add('disabled');
+          btnX.classList.add('disabled');
+
+          // Highlight chosen button
+          if (isCorrect) {
+            btn.classList.add('correct');
+            ansDiv.classList.add('is-correct');
+            score++;
+          } else {
+            btn.classList.add('wrong');
+            ansDiv.classList.add('is-wrong');
+            // Also highlight the correct one
+            if (item.correct === 'O') btnO.classList.add('correct');
+            else btnX.classList.add('correct');
+          }
+
+          // Show explanation
+          ansDiv.classList.add('show');
+
+          answered++;
+          if (answered === totalQ) {
+            var scoreDiv = document.createElement('div');
+            scoreDiv.className = 'quiz-score';
+            scoreDiv.textContent = score + '/' + totalQ + ' 정답!';
+            ulEl.parentElement.appendChild(scoreDiv);
+          }
+        }
+
+        btnO.addEventListener('click', handleClick);
+        btnX.addEventListener('click', handleClick);
+      });
+    });
+  })();
+
   // 시작 슬라이드 (해시 지원)
   var start = parseInt((location.hash || '').replace('#', ''), 10);
   show(start >= 1 && start <= total ? start - 1 : 0);
