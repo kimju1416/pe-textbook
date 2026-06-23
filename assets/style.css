@@ -176,17 +176,25 @@ body:has(.deck) .toc-btn{display:flex}
 .toc-card-footer .label{font-size:12px;font-weight:600;color:var(--ink-soft)}
 
 /* ===================== SLIDE DECK ===================== */
-.deck{position:fixed;inset:0;overflow:hidden;background:#111}
+.deck{position:fixed;inset:0;overflow:hidden;background:#111;
+  display:flex;align-items:center;justify-content:center;
+}
 .slide{
-  position:absolute;inset:0;display:flex;flex-direction:column;
+  position:absolute;
+  /* PC: 16:9 letterbox centred */
+  width:min(100vw, 177.78vh); /* 16:9 */
+  height:min(100vh, 56.25vw);
+  left:50%;top:50%;transform:translate(-50%,-50%) translateX(30px);
+  display:flex;flex-direction:column;
   justify-content:center;align-items:center;
-  padding:24px 60px 40px;
+  padding:32px 64px 40px;
   background:#fff;color:var(--ink);
-  opacity:0;visibility:hidden;transform:translateX(30px);
+  opacity:0;visibility:hidden;
   transition:opacity .45s ease,transform .45s ease,visibility .45s;
   overflow-y:auto;
+  box-shadow:0 0 60px rgba(0,0,0,.3);
 }
-.slide.active{opacity:1;visibility:visible;transform:none}
+.slide.active{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
 .content{width:100%;max-width:860px;text-align:left;position:relative}
 
 /* Big background slide number */
@@ -303,7 +311,7 @@ tbody tr:nth-child(even){background:#f9f9f9}
 td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
 
 /* ===================== COVER SLIDE ===================== */
-.slide.cover{align-items:flex-start;justify-content:center;background:#111;color:#fff}
+.slide.cover{align-items:flex-start;justify-content:center;background:#111;color:#fff;padding:40px 64px}
 .cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .cover-shade{position:absolute;inset:0;z-index:1;
   background:linear-gradient(105deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.5) 50%,rgba(232,89,12,.15) 100%)}
@@ -386,8 +394,9 @@ body.on-cover .dots i.on{background:var(--accent)}
 .nav button#prev{left:0;border-radius:0 6px 6px 0}
 .nav button#next{right:0;border-radius:6px 0 0 6px}
 .nav button:disabled{opacity:0 !important;cursor:default;pointer-events:none}
-/* Show arrows on deck hover */
+/* Show arrows on deck hover/touch */
 .deck:hover~.nav button:not(:disabled){opacity:.5}
+@media(hover:none){.nav button:not(:disabled){opacity:.4}}
 .dots{display:flex;gap:6px;align-items:center;opacity:.5;transition:opacity .2s}
 .dots:hover{opacity:1}
 .dots i{width:7px;height:7px;background:rgba(0,0,0,.2);cursor:pointer;transition:.2s;border-radius:50%}
@@ -397,11 +406,45 @@ body.on-cover .dots i.on{background:var(--accent)}
 .slide{cursor:pointer}
 .slide a,.slide button,.slide input,.slide select,.slide textarea{cursor:auto}
 
+/* Mobile: 전체 화면, 미러링 최적화 */
 @media(max-width:600px){
+  .slide{
+    width:100vw;height:100vh;
+    padding:20px 18px 36px;
+    box-shadow:none;
+  }
   .dots i{width:5px;height:5px}
-  .slide{padding:24px 18px 40px}
   .slide.cover h1{font-size:36px}
   .slide h2,.media h2{font-size:24px}
   .content::before{font-size:100px;top:-20px;right:-10px}
   .nav button{width:32px;height:44px;font-size:16px}
+  .slide li{padding:12px 0;font-size:15px}
+  .slide li .n{font-size:20px}
+  .slide li b{font-size:15px}
+  .box{padding:14px}
+  .box h3{font-size:16px}
+  .box p{font-size:14px}
+  .chip{padding:6px 12px;font-size:13px}
+  .note{font-size:14px;padding:12px 14px}
+  th,td{padding:10px 12px;font-size:14px}
+  .photo figcaption{font-size:11px;padding:16px 12px 10px}
+}
+
+/* Mobile landscape: 미러링 시 16:9에 최적 */
+@media(max-height:500px){
+  .slide{
+    width:100vw;height:100vh;
+    padding:16px 48px 28px;
+    box-shadow:none;
+  }
+  .slide.cover{padding:16px 48px}
+  .slide.cover .emoji{font-size:40px;margin:6px 0 2px}
+  .slide.cover h1{font-size:clamp(32px,5vw,48px)}
+  .slide.cover .lead{font-size:16px;margin-top:10px}
+  .slide h2,.media h2{font-size:clamp(22px,3vw,32px)}
+  .slide .desc{font-size:15px;margin-bottom:16px}
+  .two{gap:10px}
+  .media{gap:20px}
+  .chips{gap:6px;margin-top:12px}
+  .nav button{height:40px;width:28px;font-size:16px}
 }
