@@ -24,7 +24,11 @@
   if (dotsBox) {
     slides.forEach(function (_, i) {
       var d = document.createElement('i');
+      d.setAttribute('tabindex', '0');
+      d.setAttribute('role', 'button');
+      d.setAttribute('aria-label', '슬라이드 ' + (i + 1));
       d.addEventListener('click', function () { go(i); });
+      d.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { go(i); e.preventDefault(); } });
       dotsBox.appendChild(d);
       dots.push(d);
     });
@@ -68,10 +72,11 @@
     else if (e.key === 'End') { go(total - 1); }
   });
 
-  // 슬라이드 클릭으로 다음 넘기기
+  // 슬라이드 클릭으로 다음 넘기기 (스크롤 가능한 슬라이드는 제외)
   document.querySelector('.deck').addEventListener('click', function (e) {
-    // 링크, 버튼, 인터랙티브 요소 클릭은 제외
-    if (e.target.closest('a, button, input, select, textarea, .dots, .nav')) return;
+    if (e.target.closest('a, button, input, select, textarea, .dots, .nav, .quiz-btns')) return;
+    var slide = slides[cur];
+    if (slide.scrollHeight > slide.clientHeight + 10) return; // 스크롤 가능한 슬라이드는 클릭 넘기기 비활성
     next();
   });
 
@@ -322,6 +327,12 @@
             var scoreDiv = document.createElement('div');
             scoreDiv.className = 'quiz-score';
             scoreDiv.textContent = score + '/' + totalQ + ' 정답!';
+            var resetBtn = document.createElement('button');
+            resetBtn.className = 'quiz-btn';
+            resetBtn.style.cssText = 'margin:12px auto 0;display:block;font-size:14px;padding:8px 20px';
+            resetBtn.textContent = '다시 풀기';
+            resetBtn.addEventListener('click', function(){ location.reload(); });
+            scoreDiv.appendChild(resetBtn);
             ulEl.parentElement.appendChild(scoreDiv);
           }
         }
