@@ -72,11 +72,9 @@
     else if (e.key === 'End') { go(total - 1); }
   });
 
-  // 슬라이드 클릭으로 다음 넘기기 (스크롤 가능한 슬라이드는 제외)
+  // 슬라이드 클릭으로 다음 넘기기
   document.querySelector('.deck').addEventListener('click', function (e) {
     if (e.target.closest('a, button, input, select, textarea, .dots, .nav, .quiz-btns')) return;
-    var slide = slides[cur];
-    if (slide.scrollHeight > slide.clientHeight + 10) return; // 스크롤 가능한 슬라이드는 클릭 넘기기 비활성
     next();
   });
 
