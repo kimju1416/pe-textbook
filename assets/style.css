@@ -186,8 +186,8 @@ body:has(.deck) .toc-btn{display:flex}
   height:min(100vh, 56.25vw);
   left:50%;top:50%;transform:translate(-50%,-50%) translateX(30px);
   display:flex;flex-direction:column;
-  justify-content:center;align-items:center;
-  padding:32px 64px 40px;
+  justify-content:flex-start;align-items:center;
+  padding:48px 64px 56px;
   background:#fff;color:var(--ink);
   opacity:0;visibility:hidden;
   transition:opacity .45s ease,transform .45s ease,visibility .45s;
@@ -195,7 +195,8 @@ body:has(.deck) .toc-btn{display:flex}
   box-shadow:0 0 60px rgba(0,0,0,.3);
 }
 .slide.active{opacity:1;visibility:visible;transform:translate(-50%,-50%)}
-.content{width:100%;max-width:860px;text-align:left;position:relative}
+/* 내용이 짧을 때 수직 가운데 정렬 */
+.content{width:100%;max-width:860px;text-align:left;position:relative;margin:auto 0}
 
 /* Big background slide number */
 .content::before{
@@ -311,7 +312,9 @@ tbody tr:nth-child(even){background:#f9f9f9}
 td:last-child,th:last-child{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
 
 /* ===================== COVER SLIDE ===================== */
-.slide.cover{align-items:flex-start;justify-content:center;background:#111;color:#fff;padding:40px 64px}
+.slide.cover{align-items:flex-start;justify-content:flex-start;background:#111;color:#fff;padding:48px 64px 56px}
+.slide.cover>.kicker{margin-top:auto}
+.slide.cover>.lead{margin-bottom:auto}
 .cover-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .cover-shade{position:absolute;inset:0;z-index:1;
   background:linear-gradient(105deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.5) 50%,rgba(232,89,12,.15) 100%)}
@@ -410,7 +413,7 @@ body.on-cover .dots i.on{background:var(--accent)}
 @media(max-width:600px){
   .slide{
     width:100vw;height:100vh;
-    padding:20px 18px 36px;
+    padding:40px 18px 48px;
     box-shadow:none;
   }
   .dots i{width:5px;height:5px}
@@ -434,10 +437,10 @@ body.on-cover .dots i.on{background:var(--accent)}
 @media(max-height:500px){
   .slide{
     width:100vw;height:100vh;
-    padding:16px 48px 28px;
+    padding:36px 48px 40px;
     box-shadow:none;
   }
-  .slide.cover{padding:16px 48px}
+  .slide.cover{padding:36px 48px 40px}
   .slide.cover .emoji{font-size:40px;margin:6px 0 2px}
   .slide.cover h1{font-size:clamp(32px,5vw,48px)}
   .slide.cover .lead{font-size:16px;margin-top:10px}
