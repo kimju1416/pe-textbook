@@ -32,6 +32,15 @@
     if (prevBtn) prevBtn.disabled = (cur === 0);
     if (nextBtn) nextBtn.disabled = (cur === total - 1);
     dots.forEach(function (d, k) { d.classList.toggle('on', k === cur); });
+    // 커버 슬라이드면 body에 on-cover 클래스 토글
+    document.body.classList.toggle('on-cover', slides[cur].classList.contains('cover'));
+    // 상단바 잠깐 보였다가 사라짐
+    var topbar = document.querySelector('.topbar');
+    if (topbar) {
+      topbar.classList.add('show');
+      clearTimeout(topbar._hideTimer);
+      topbar._hideTimer = setTimeout(function () { topbar.classList.remove('show'); }, 1500);
+    }
     if (location.hash !== '#' + (cur + 1)) {
       history.replaceState(null, '', '#' + (cur + 1));
     }
@@ -49,6 +58,13 @@
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { prev(); e.preventDefault(); }
     else if (e.key === 'Home') { go(0); }
     else if (e.key === 'End') { go(total - 1); }
+  });
+
+  // 슬라이드 클릭으로 다음 넘기기
+  document.querySelector('.deck').addEventListener('click', function (e) {
+    // 링크, 버튼, 인터랙티브 요소 클릭은 제외
+    if (e.target.closest('a, button, input, select, textarea, .dots, .nav')) return;
+    next();
   });
 
   // 터치 스와이프
