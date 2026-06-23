@@ -300,8 +300,10 @@ body:has(.deck) .toc-btn{display:flex}
 svg text{font-family:var(--sans)}
 
 /* Table - editorial */
+/* 테이블 가로 스크롤 래퍼 자동 적용 */
+.table-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:clamp(15px, 1.8vw, 18px);border-radius:0;
-  box-shadow:none;overflow:visible}
+  box-shadow:none;overflow:visible;min-width:400px}
 th,td{padding:16px 18px;text-align:left;border-bottom:1px solid var(--line)}
 thead th{
   background:var(--ink);color:#fff;font-weight:700;

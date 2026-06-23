@@ -1,5 +1,13 @@
 /* ===== 체육 교과서 슬라이드 엔진 (공통) ===== */
 (function () {
+  // 테이블 자동 래퍼 (가로 스크롤 지원)
+  document.querySelectorAll('.slide table').forEach(function(t){
+    if(!t.parentElement.classList.contains('table-wrap')){
+      var w=document.createElement('div');w.className='table-wrap';
+      t.parentNode.insertBefore(w,t);w.appendChild(t);
+    }
+  });
+
   var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
   if (!slides.length) return;
   var total = slides.length;
