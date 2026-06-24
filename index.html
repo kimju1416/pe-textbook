@@ -453,6 +453,7 @@ body {
 <div class="level-tabs" id="levelTabs">
   <div class="level-tab active" data-level="ms">중학교</div>
   <div class="level-tab" data-level="hs">고등학교 심화</div>
+  <div class="level-tab" data-level="en" style="margin-left:16px;border-left:2px solid var(--gray-light)">English</div>
 </div>
 
 <!-- 구기 종목 -->
@@ -741,17 +742,17 @@ body {
       var level = tab.getAttribute('data-level');
 
       cards.forEach(function(card){
-        var href = card.getAttribute('href');
+        // 원본 href 저장
+        if(!card.getAttribute('data-ms-href')){
+          card.setAttribute('data-ms-href', card.getAttribute('href'));
+        }
+        var base = card.getAttribute('data-ms-href');
         if(level === 'hs'){
-          // Switch to advanced version
-          if(href.indexOf('-adv.html') === -1){
-            card.setAttribute('data-ms-href', href);
-            card.setAttribute('href', href.replace('.html', '-adv.html'));
-          }
+          card.setAttribute('href', base.replace('.html', '-adv.html'));
+        } else if(level === 'en'){
+          card.setAttribute('href', base.replace('.html', '-en.html'));
         } else {
-          // Switch back to middle school version
-          var msHref = card.getAttribute('data-ms-href');
-          if(msHref) card.setAttribute('href', msHref);
+          card.setAttribute('href', base);
         }
       });
     });
