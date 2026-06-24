@@ -735,11 +735,19 @@ body {
     });
   }
 
+  var msTab = tabs[0]; // 중학교 탭 참조
   tabs.forEach(function(tab){
     tab.addEventListener('click', function(){
-      tabs.forEach(function(t){ t.classList.remove('active'); });
-      tab.classList.add('active');
       var level = tab.getAttribute('data-level');
+      // 같은 탭 다시 누르면 중학교로 복귀
+      if(tab.classList.contains('active') && level !== 'ms'){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        msTab.classList.add('active');
+        level = 'ms';
+      } else {
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        tab.classList.add('active');
+      }
 
       var enNames = {
         '농구':'Basketball','축구':'Soccer','핸드볼':'Handball','풋살':'Futsal',
