@@ -741,18 +741,50 @@ body {
       tab.classList.add('active');
       var level = tab.getAttribute('data-level');
 
+      var enNames = {
+        '농구':'Basketball','축구':'Soccer','핸드볼':'Handball','풋살':'Futsal',
+        '배구':'Volleyball','배드민턴':'Badminton','탁구':'Table Tennis',
+        '테니스':'Tennis','야구':'Baseball','티볼':'T-Ball','소프트볼':'Softball',
+        '단거리':'Sprint','이어달리기':'Relay','멀리뛰기':'Long Jump',
+        '높이뛰기':'High Jump','뜀틀':'Vault','매트운동':'Mat Exercise',
+        'PAPS':'PAPS','플로어볼':'Floorball','츄크볼':'Tchoukball',
+        '피클볼':'Pickleball','넷볼':'Netball','킨볼':'Kin-Ball',
+        '플라잉디스크':'Flying Disc','창작댄스':'Creative Dance',
+        '리듬운동':'Rhythmic Movement','줄넘기':'Jump Rope',
+        '심폐소생술':'CPR','응급처치':'First Aid','수업 안전 가이드':'Safety Guide'
+      };
+      var enTypes = {
+        '영역형':'Territory','네트형':'Net','필드형':'Field','육상':'Track',
+        '체조':'Gymnastics','건강체력':'Fitness','뉴스포츠':'New Sport',
+        '표현':'Expression','도전':'Challenge','응급처치':'First Aid','안전':'Safety'
+      };
+
       cards.forEach(function(card){
-        // 원본 href 저장
         if(!card.getAttribute('data-ms-href')){
           card.setAttribute('data-ms-href', card.getAttribute('href'));
+          var nameEl = card.querySelector('.card-name');
+          var typeEl = card.querySelector('.card-type');
+          if(nameEl) card.setAttribute('data-kr-name', nameEl.textContent);
+          if(typeEl) card.setAttribute('data-kr-type', typeEl.textContent);
         }
         var base = card.getAttribute('data-ms-href');
+        var nameEl = card.querySelector('.card-name');
+        var typeEl = card.querySelector('.card-type');
+
         if(level === 'hs'){
           card.setAttribute('href', base.replace('.html', '-adv.html'));
+          if(nameEl) nameEl.textContent = card.getAttribute('data-kr-name');
+          if(typeEl) typeEl.textContent = card.getAttribute('data-kr-type');
         } else if(level === 'en'){
           card.setAttribute('href', base.replace('.html', '-en.html'));
+          var krName = card.getAttribute('data-kr-name');
+          if(nameEl && enNames[krName]) nameEl.textContent = enNames[krName];
+          var krType = card.getAttribute('data-kr-type');
+          if(typeEl && enTypes[krType]) typeEl.textContent = enTypes[krType];
         } else {
           card.setAttribute('href', base);
+          if(nameEl) nameEl.textContent = card.getAttribute('data-kr-name');
+          if(typeEl) typeEl.textContent = card.getAttribute('data-kr-type');
         }
       });
     });
