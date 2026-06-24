@@ -1,5 +1,19 @@
 /* ===== 체육 교과서 슬라이드 엔진 (공통) ===== */
 (function () {
+  // 다크모드 토글
+  var darkBtn = document.createElement('button');
+  darkBtn.className = 'dark-toggle';
+  darkBtn.setAttribute('aria-label', '다크모드');
+  darkBtn.textContent = '🌙';
+  document.body.appendChild(darkBtn);
+  if(localStorage.getItem('pe-dark')==='1') document.body.classList.add('dark');
+  darkBtn.addEventListener('click', function(){
+    document.body.classList.toggle('dark');
+    darkBtn.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+    localStorage.setItem('pe-dark', document.body.classList.contains('dark') ? '1' : '0');
+  });
+  if(document.body.classList.contains('dark')) darkBtn.textContent = '☀️';
+
   // 테이블 자동 래퍼 (가로 스크롤 지원)
   document.querySelectorAll('.slide table').forEach(function(t){
     if(!t.parentElement.classList.contains('table-wrap')){
