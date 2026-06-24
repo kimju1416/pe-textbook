@@ -240,8 +240,12 @@
 
       // Get text after </b>
       var afterB = html.substring(html.indexOf('</b>') + 4).trim();
-      // Match pattern: — O. explanation  or  — X. explanation
+      // Match pattern: — O. explanation  or  — X. explanation  or  — True/False. explanation
       var m = afterB.match(/^[\s—–-]+\s*([OX])\.\s*([\s\S]*)$/);
+      if (!m) {
+        var mEn = afterB.match(/^[\s—–-]+\s*(True|False)[\.\!]?\s*([\s\S]*)$/i);
+        if (mEn) m = [null, mEn[1].toLowerCase() === 'true' ? 'O' : 'X', mEn[2]];
+      }
       if (!m) return;
 
       var correctAnswer = m[1]; // "O" or "X"
