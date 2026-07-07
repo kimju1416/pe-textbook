@@ -385,6 +385,24 @@ body {
   color: var(--orange);
 }
 
+.lang-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px auto 0;
+  max-width: 560px;
+  padding: 0 20px 4px;
+  overflow-x: auto;
+}
+.level-tab.lang-tab {
+  flex: 0 0 auto;
+  padding: 8px 18px;
+  font-size: 13px;
+  border-radius: 20px;
+  border-right: 2px solid var(--gray-light);
+  white-space: nowrap;
+}
+
 /* Footer */
 .footer {
   border-top: 1px solid var(--gray-light);
@@ -453,7 +471,12 @@ body {
 <div class="level-tabs" id="levelTabs">
   <div class="level-tab active" data-level="ms">중학교</div>
   <div class="level-tab" data-level="hs">고등학교 심화</div>
-  <div class="level-tab" data-level="en" style="margin-left:16px;border-left:2px solid var(--gray-light)">English</div>
+</div>
+<div class="lang-tabs" id="langTabs">
+  <div class="level-tab lang-tab" data-level="en">English</div>
+  <div class="level-tab lang-tab" data-level="zh">中文</div>
+  <div class="level-tab lang-tab" data-level="vi">Tiếng Việt</div>
+  <div class="level-tab lang-tab" data-level="fil">Filipino</div>
 </div>
 
 <!-- 구기 종목 -->
@@ -766,6 +789,57 @@ body {
         '체조':'Gymnastics','건강체력':'Fitness','뉴스포츠':'New Sport',
         '표현':'Expression','도전':'Challenge','응급처치':'First Aid','안전':'Safety'
       };
+      var zhNames = {
+        '농구':'篮球','축구':'足球','핸드볼':'手球','풋살':'五人制足球',
+        '배구':'排球','배드민턴':'羽毛球','탁구':'乒乓球',
+        '테니스':'网球','야구':'棒球','티볼':'T球','소프트볼':'垒球',
+        '단거리':'短跑','이어달리기':'接力赛','멀리뛰기':'跳远',
+        '높이뛰기':'跳高','뜀틀':'跳箱','매트운동':'垫上运动',
+        'PAPS':'PAPS','플로어볼':'地板球','츄크볼':'楚克球',
+        '피클볼':'匹克球','넷볼':'无板篮球','킨볼':'键球',
+        '플라잉디스크':'飞盘','창작댄스':'创意舞蹈',
+        '리듬운동':'韵律活动','줄넘기':'跳绳',
+        '심폐소생술':'心肺复苏','응급처치':'急救','수업 안전 가이드':'课堂安全指南'
+      };
+      var zhTypes = {
+        '영역형':'侵入型','네트형':'网类','필드형':'场地类','육상':'田径',
+        '체조':'体操','건강체력':'体适能','뉴스포츠':'新兴运动',
+        '표현':'表现','도전':'挑战','응급처치':'急救','안전':'安全'
+      };
+      var viNames = {
+        '농구':'Bóng rổ','축구':'Bóng đá','핸드볼':'Bóng ném','풋살':'Futsal',
+        '배구':'Bóng chuyền','배드민턴':'Cầu lông','탁구':'Bóng bàn',
+        '테니스':'Quần vợt','야구':'Bóng chày','티볼':'T-ball','소프트볼':'Bóng mềm',
+        '단거리':'Chạy cự ly ngắn','이어달리기':'Chạy tiếp sức','멀리뛰기':'Nhảy xa',
+        '높이뛰기':'Nhảy cao','뜀틀':'Nhảy ngựa','매트운동':'Thể dục thảm',
+        'PAPS':'PAPS','플로어볼':'Bóng sàn','츄크볼':'Tchoukball',
+        '피클볼':'Pickleball','넷볼':'Netball','킨볼':'Kin-Ball',
+        '플라잉디스크':'Đĩa bay','창작댄스':'Múa sáng tạo',
+        '리듬운동':'Vận động nhịp điệu','줄넘기':'Nhảy dây',
+        '심폐소생술':'Hồi sức tim phổi','응급처치':'Sơ cứu','수업 안전 가이드':'Hướng dẫn an toàn trong giờ học'
+      };
+      var viTypes = {
+        '영역형':'Đối kháng','네트형':'Lưới','필드형':'Sân','육상':'Điền kinh',
+        '체조':'Thể dục','건강체력':'Thể lực','뉴스포츠':'Thể thao mới',
+        '표현':'Biểu diễn','도전':'Thử thách','응급처치':'Sơ cứu','안전':'An toàn'
+      };
+      var filNames = {
+        '농구':'Basketbol','축구':'Soccer','핸드볼':'Handball','풋살':'Futsal',
+        '배구':'Volleyball','배드민턴':'Badminton','탁구':'Table Tennis',
+        '테니스':'Tennis','야구':'Baseball','티볼':'T-Ball','소프트볼':'Softball',
+        '단거리':'Sprint','이어달리기':'Relay','멀리뛰기':'Pagtalon sa Layo',
+        '높이뛰기':'Pagtalon sa Taas','뜀틀':'Vaulting','매트운동':'Ehersisyo sa Banig',
+        'PAPS':'PAPS','플로어볼':'Floorball','츄크볼':'Tchoukball',
+        '피클볼':'Pickleball','넷볼':'Netball','킨볼':'Kin-Ball',
+        '플라잉디스크':'Flying Disc','창작댄스':'Malikhaing Sayaw',
+        '리듬운동':'Ritmikong Galaw','줄넘기':'Luksong Lubid',
+        '심폐소생술':'CPR','응급처치':'Unang Lunas','수업 안전 가이드':'Gabay sa Kaligtasan'
+      };
+      var filTypes = {
+        '영역형':'Pagsalakay','네트형':'Lambat','필드형':'Larangan','육상':'Atletiko',
+        '체조':'Gymnastics','건강체력':'Kalusugan','뉴스포츠':'Bagong Palakasan',
+        '표현':'Pagpapahayag','도전':'Hamon','응급처치':'Unang Lunas','안전':'Kaligtasan'
+      };
 
       cards.forEach(function(card){
         if(!card.getAttribute('data-ms-href')){
@@ -789,6 +863,24 @@ body {
           if(nameEl && enNames[krName]) nameEl.textContent = enNames[krName];
           var krType = card.getAttribute('data-kr-type');
           if(typeEl && enTypes[krType]) typeEl.textContent = enTypes[krType];
+        } else if(level === 'zh'){
+          card.setAttribute('href', base.replace('.html', '-zh.html'));
+          var krName = card.getAttribute('data-kr-name');
+          if(nameEl && zhNames[krName]) nameEl.textContent = zhNames[krName];
+          var krType = card.getAttribute('data-kr-type');
+          if(typeEl && zhTypes[krType]) typeEl.textContent = zhTypes[krType];
+        } else if(level === 'vi'){
+          card.setAttribute('href', base.replace('.html', '-vi.html'));
+          var krName = card.getAttribute('data-kr-name');
+          if(nameEl && viNames[krName]) nameEl.textContent = viNames[krName];
+          var krType = card.getAttribute('data-kr-type');
+          if(typeEl && viTypes[krType]) typeEl.textContent = viTypes[krType];
+        } else if(level === 'fil'){
+          card.setAttribute('href', base.replace('.html', '-fil.html'));
+          var krName = card.getAttribute('data-kr-name');
+          if(nameEl && filNames[krName]) nameEl.textContent = filNames[krName];
+          var krType = card.getAttribute('data-kr-type');
+          if(typeEl && filTypes[krType]) typeEl.textContent = filTypes[krType];
         } else {
           card.setAttribute('href', base);
           if(nameEl) nameEl.textContent = card.getAttribute('data-kr-name');
