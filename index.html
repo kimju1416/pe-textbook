@@ -342,6 +342,66 @@ body {
   transform: none;
 }
 
+/* Card share button */
+.card-share {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--gray-light);
+  background: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+.card-share:hover {
+  background: var(--orange);
+  border-color: var(--orange);
+}
+
+/* Share modal (main page) */
+.share-overlay {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(0,0,0,.6);
+  opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.share-overlay.open { opacity: 1; visibility: visible; }
+.share-modal {
+  background: var(--white); max-width: 320px; width: 90%;
+  padding: 28px 24px; text-align: center; position: relative;
+  transform: translateY(10px); transition: transform .3s ease;
+  box-shadow: 0 8px 40px rgba(0,0,0,.2);
+}
+.share-overlay.open .share-modal { transform: none; }
+.share-modal h3 {
+  font-family: 'Noto Serif KR', serif; font-size: 18px; font-weight: 900;
+  color: var(--black); margin-bottom: 16px;
+}
+.share-modal .share-qr { width: 180px; height: 180px; margin: 0 auto 16px; display: block; border: 1px solid var(--gray-light); }
+.share-modal .share-url {
+  font-size: 12px; color: var(--gray-mid); word-break: break-all;
+  padding: 10px; background: var(--orange-light); border: 1px solid var(--gray-light);
+  margin-bottom: 14px;
+}
+.share-modal .share-actions { display: flex; gap: 8px; }
+.share-modal button.share-action {
+  flex: 1; padding: 10px; border: 1px solid var(--black); background: var(--white);
+  cursor: pointer; font-weight: 700; font-size: 13px; color: var(--black);
+  transition: background .15s, color .15s;
+}
+.share-modal button.share-action:hover { background: var(--black); color: var(--white); }
+.share-modal .share-close {
+  position: absolute; top: 8px; right: 8px; width: 28px; height: 28px;
+  border: none; background: none; cursor: pointer; font-size: 16px; color: var(--gray-mid);
+}
+
 .card.soon::before { display: none; }
 
 .card.soon .card-status {
@@ -738,6 +798,68 @@ body {
 (function(){
   var tabs = document.querySelectorAll('.level-tab');
   var cards = document.querySelectorAll('.card-grid a.card');
+
+  // 종목 카드 공유(링크/QR) 버튼
+  (function initCardShare(){
+    var overlay = document.createElement('div');
+    overlay.className = 'share-overlay';
+    var modal = document.createElement('div');
+    modal.className = 'share-modal';
+    modal.innerHTML =
+      '<button class="share-close" aria-label="닫기">✕</button>' +
+      '<h3>📤 공유하기</h3>' +
+      '<img class="share-qr" alt="QR 코드">' +
+      '<div class="share-url"></div>' +
+      '<div class="share-actions">' +
+        '<button class="share-action share-copy">🔗 링크 복사</button>' +
+        '<button class="share-action share-native" style="display:none">📤 공유하기</button>' +
+      '</div>';
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    var qrImg = modal.querySelector('.share-qr');
+    var urlBox = modal.querySelector('.share-url');
+    var copyBtn = modal.querySelector('.share-copy');
+    var nativeBtn = modal.querySelector('.share-native');
+    var closeBtn = modal.querySelector('.share-close');
+    if (navigator.share) nativeBtn.style.display = '';
+
+    function openShare(url, title){
+      urlBox.textContent = url;
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(url);
+      overlay.classList.add('open');
+      copyBtn.textContent = '🔗 링크 복사';
+      nativeBtn.onclick = function(){
+        navigator.share({ title: title, url: url }).catch(function(){});
+      };
+    }
+    function closeShare(){ overlay.classList.remove('open'); }
+    copyBtn.addEventListener('click', function(){
+      navigator.clipboard.writeText(urlBox.textContent).then(function(){
+        copyBtn.textContent = '✅ 복사됨!';
+        setTimeout(function(){ copyBtn.textContent = '🔗 링크 복사'; }, 1500);
+      });
+    });
+    closeBtn.addEventListener('click', closeShare);
+    overlay.addEventListener('click', function(e){ if(e.target===overlay) closeShare(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeShare(); });
+
+    cards.forEach(function(card){
+      var btn = document.createElement('button');
+      btn.className = 'card-share';
+      btn.setAttribute('aria-label', '공유');
+      btn.innerHTML = '🔗';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        var href = card.getAttribute('href');
+        var full = new URL(href, location.href).href;
+        var name = card.querySelector('.card-name');
+        openShare(full, name ? name.textContent + ' · 체육 플레이북' : document.title);
+      });
+      card.appendChild(btn);
+    });
+  })();
 
   // 햄버거 메뉴
   var hamburger = document.getElementById('hamburger');

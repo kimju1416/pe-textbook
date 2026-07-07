@@ -219,6 +219,64 @@
     }
   });
 
+  // ===== 공유 (링크 · QR코드) =====
+  (function initShare() {
+    var shareBtn = document.createElement('button');
+    shareBtn.className = 'share-btn';
+    shareBtn.setAttribute('aria-label', '공유');
+    shareBtn.innerHTML = '🔗';
+    document.body.appendChild(shareBtn);
+
+    var overlay = document.createElement('div');
+    overlay.className = 'share-overlay';
+    var modal = document.createElement('div');
+    modal.className = 'share-modal';
+    modal.innerHTML =
+      '<button class="share-close" aria-label="닫기">✕</button>' +
+      '<h3>📤 이 페이지 공유하기</h3>' +
+      '<img class="share-qr" alt="QR 코드">' +
+      '<div class="share-url"></div>' +
+      '<div class="share-actions">' +
+        '<button class="share-action share-copy">🔗 링크 복사</button>' +
+        '<button class="share-action share-native" style="display:none">📤 공유하기</button>' +
+      '</div>';
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    var qrImg = modal.querySelector('.share-qr');
+    var urlBox = modal.querySelector('.share-url');
+    var copyBtn = modal.querySelector('.share-copy');
+    var nativeBtn = modal.querySelector('.share-native');
+    var closeBtn = modal.querySelector('.share-close');
+
+    if (navigator.share) nativeBtn.style.display = '';
+
+    function openShare(url, title) {
+      urlBox.textContent = url;
+      qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(url);
+      overlay.classList.add('open');
+      copyBtn.textContent = '🔗 링크 복사';
+      nativeBtn.onclick = function () {
+        navigator.share({ title: title || document.title, url: url }).catch(function () {});
+      };
+    }
+    function closeShare() { overlay.classList.remove('open'); }
+
+    copyBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(urlBox.textContent).then(function () {
+        copyBtn.textContent = '✅ 복사됨!';
+        setTimeout(function () { copyBtn.textContent = '🔗 링크 복사'; }, 1500);
+      });
+    });
+    closeBtn.addEventListener('click', closeShare);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeShare(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeShare(); });
+
+    shareBtn.addEventListener('click', function () {
+      openShare(location.href.split('#')[0], document.title);
+    });
+  })();
+
   // ===== 인터랙티브 O/X 퀴즈 =====
   (function initQuiz() {
     // Find all <li> elements whose <span class="n"> text matches Q1~Q9
